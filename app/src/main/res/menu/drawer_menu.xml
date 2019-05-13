@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/home_menu"
+            android:title="Home"
+            android:textColor="#1871ba"
+            >
+
+        </item>
+
+
+        <item
+            android:id="@+id/and_gate_menu"
+            android:title="AND Gate"
+            android:textColor="#1871ba"
+            >
+
+        </item>
+
+        <item
+            android:id="@+id/or_gate_menu"
+            android:textColor="#1871ba"
+
+            android:title="OR Gate">
+
+        </item>
+
+        <item
+            android:id="@+id/nor_gate_menu"
+            android:textColor="#1871ba"
+
+            android:title="NOR Gate">
+
+        </item>
+
+        <item
+            android:id="@+id/XOR_gate_menu"
+            android:textColor="#1871ba"
+
+            android:title="XOR Gate">
+
+        </item>
+
+        <item
+            android:id="@+id/half_adder_menu"
+            android:textColor="#1871ba"
+
+            android:title="Half Adder">
+
+        </item>
+
+    </group>
+
+</menu>

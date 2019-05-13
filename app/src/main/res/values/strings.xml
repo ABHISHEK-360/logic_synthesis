@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">LogicSynthesis</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_close">drawer close</string>
+    <string name="o_0">O<sub><small>0</small></sub> :-</string>
+    <string name="o_1">O<sub><small>1</small></sub> :-</string>
+
+    <string name="i_1">I<sub><small>1</small></sub> :-</string>
+    <string name="i_0">I<sub><small>0</small></sub> :-</string>
+    <string name="usage_instruction">Welcome,\n click on menu icon\n or \nSwipe from left \nfor the list of logic gates.</string>
+</resources>
