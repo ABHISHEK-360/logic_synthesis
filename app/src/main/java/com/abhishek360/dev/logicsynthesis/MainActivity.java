@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
                                                                     AndGateFragment.OnFragmentInteractionListener,
                                                                         OrGateFragment.OnFragmentInteractionListener,
                                                 XorGateFragment.OnFragmentInteractionListener,AdderFragment.OnFragmentInteractionListener,
+                                            SRFlipFlopFragment.OnFragmentInteractionListener,FullAdderFragment.OnFragmentInteractionListener,
 
         NavigationView.OnNavigationItemSelectedListener
 {
@@ -165,6 +166,28 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
 
             case R.id.half_adder_menu:
                 fragment = new AdderFragment();
+                if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+                    getSupportFragmentManager().popBackStackImmediate();
+                ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.home_frame, fragment);
+                ft.addToBackStack(null);
+                ft.commit();
+
+                break;
+
+            case R.id.full_adder_menu:
+                fragment = new FullAdderFragment();
+                if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+                    getSupportFragmentManager().popBackStackImmediate();
+                ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.home_frame, fragment);
+                ft.addToBackStack(null);
+                ft.commit();
+
+                break;
+
+            case R.id.srff_gate_menu:
+                fragment = new SRFlipFlopFragment();
                 if (getSupportFragmentManager().getBackStackEntryCount() > 0)
                     getSupportFragmentManager().popBackStackImmediate();
                 ft = getSupportFragmentManager().beginTransaction();

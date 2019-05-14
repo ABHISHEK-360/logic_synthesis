@@ -13,11 +13,11 @@
         <ImageView
             android:layout_width="match_parent"
             android:padding="10dp"
-            android:id="@+id/xor_imageview"
+            android:id="@+id/full_adder_imageview"
             android:layout_margin="10dp"
             android:background="@drawable/round_corner_bg_image"
             android:layout_height="200dp"
-            android:src="@drawable/xor"/>
+            android:src="@drawable/full_adder"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:gravity="center"
             android:textSize="40sp"
             android:textColor="@color/myBlue"
-            android:text="---XOR Gate---"/>
+            android:text="--- Full Adder---"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,17 +71,17 @@
                         android:textSize="20sp"
                         android:padding="5dp"
                         android:textColor="@android:color/black"
-                        android:text="@string/i_0"/>
+                        android:text="@string/a_0"/>
 
                     <EditText
-                        android:inputType="number"
-                        android:maxLines="1"
                         android:padding="5dp"
-                        android:maxLength="1"
-
-                        android:id="@+id/xor_edittext_input_1"
+                        android:id="@+id/full_adder_edittext_input_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:maxLength="1"
+
+                        android:inputType="number"
+                        android:maxLines="1"
                         android:hint="Binary Value"/>
 
 
@@ -99,18 +99,47 @@
                         android:textSize="20sp"
                         android:padding="5dp"
                         android:textColor="@android:color/black"
-                        android:text="@string/i_1"/>
+                        android:text="@string/b_0"/>
 
                     <EditText
+                        android:padding="5dp"
                         android:inputType="number"
                         android:maxLines="1"
-                        android:padding="5dp"
                         android:maxLength="1"
 
-                        android:id="@+id/xor_edittext_input_2"
+                        android:id="@+id/full_adder_edittext_input_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Binary Value"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:padding="5dp"
+                        android:textColor="@android:color/black"
+                        android:text="@string/c_0"/>
+
+                    <EditText
+                        android:padding="5dp"
+                        android:id="@+id/full_adder_edittext_input_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLength="1"
+
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:hint="Binary Value"/>
+
+
                 </LinearLayout>
 
 
@@ -155,8 +184,33 @@
 
                     <EditText
                         android:padding="5dp"
+                        android:id="@+id/full_adder_textview_output_1"
                         android:enabled="false"
-                        android:id="@+id/xor_textview_output_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Binary Value"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:padding="5dp"
+                        android:textColor="@android:color/black"
+                        android:text="@string/c_out"/>
+
+                    <EditText
+                        android:padding="5dp"
+                        android:id="@+id/full_adder_textview_output_2"
+                        android:enabled="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Binary Value"/>
@@ -168,7 +222,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/xor_button_gen_output"
+            android:id="@+id/full_adder_button_gen_output"
             android:padding="10dp"
             android:layout_margin="10dp"
             android:layout_width="match_parent"

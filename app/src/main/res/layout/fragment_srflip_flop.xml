@@ -13,7 +13,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:padding="10dp"
-            android:id="@+id/xor_imageview"
+            android:id="@+id/srff_imageview"
             android:layout_margin="10dp"
             android:background="@drawable/round_corner_bg_image"
             android:layout_height="200dp"
@@ -27,7 +27,7 @@
             android:gravity="center"
             android:textSize="40sp"
             android:textColor="@color/myBlue"
-            android:text="---XOR Gate---"/>
+            android:text="---SR Flip Flop---"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                         android:textSize="20sp"
                         android:padding="5dp"
                         android:textColor="@android:color/black"
-                        android:text="@string/i_0"/>
+                        android:text="S'"/>
 
                     <EditText
                         android:inputType="number"
@@ -79,7 +79,7 @@
                         android:padding="5dp"
                         android:maxLength="1"
 
-                        android:id="@+id/xor_edittext_input_1"
+                        android:id="@+id/srff_edittext_input_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Binary Value"/>
@@ -99,7 +99,7 @@
                         android:textSize="20sp"
                         android:padding="5dp"
                         android:textColor="@android:color/black"
-                        android:text="@string/i_1"/>
+                        android:text="R'"/>
 
                     <EditText
                         android:inputType="number"
@@ -107,7 +107,7 @@
                         android:padding="5dp"
                         android:maxLength="1"
 
-                        android:id="@+id/xor_edittext_input_2"
+                        android:id="@+id/srff_edittext_input_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Binary Value"/>
@@ -151,24 +151,50 @@
                         android:textSize="20sp"
                         android:padding="5dp"
                         android:textColor="@android:color/black"
-                        android:text="@string/o_0"/>
+                        android:text="Q"/>
 
                     <EditText
                         android:padding="5dp"
                         android:enabled="false"
-                        android:id="@+id/xor_textview_output_1"
+                        android:id="@+id/srff_textview_output_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Binary Value"/>
 
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:padding="5dp"
+                        android:textColor="@android:color/black"
+                        android:text="Q'"/>
+
+                    <EditText
+                        android:padding="5dp"
+                        android:enabled="false"
+                        android:id="@+id/srff_textview_output_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Binary Value"/>
+
+
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/xor_button_gen_output"
+            android:id="@+id/srff_button_gen_output"
             android:padding="10dp"
             android:layout_margin="10dp"
             android:layout_width="match_parent"

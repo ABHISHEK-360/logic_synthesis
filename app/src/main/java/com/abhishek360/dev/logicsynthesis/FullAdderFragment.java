@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,25 +17,25 @@ import java.util.Objects;
 import static com.abhishek360.dev.logicsynthesis.MainActivity.tosty;
 
 
-public class XorGateFragment extends Fragment {
+public class FullAdderFragment extends Fragment {
 
-    private EditText input1_edittext,input2_edittext;
-    private TextView output1_textview;
+    private EditText input1_edittext,input2_edittext,input3_edittext;
+    private TextView output1_textview,output2_textview;
     private Button gen_output_button;
     private LogicGates myLogicGate;
     private ImageView gate_imageview;
+    private boolean[] result={false,false} ;
 
 
     private OnFragmentInteractionListener mListener;
 
-
-    public XorGateFragment() {
+    public FullAdderFragment() {
         // Required empty public constructor
     }
 
 
-    public static XorGateFragment newInstance(String param1, String param2) {
-        XorGateFragment fragment = new XorGateFragment();
+    public static FullAdderFragment newInstance(String param1, String param2) {
+        FullAdderFragment fragment = new FullAdderFragment();
         Bundle args = new Bundle();
 
         fragment.setArguments(args);
@@ -54,15 +53,21 @@ public class XorGateFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v=  inflater.inflate(R.layout.fragment_xor_gate, container, false);
+        // Inflate the layout for this fragment
+        View v=  inflater.inflate(R.layout.fragment_full_adder, container, false);
 
-        myLogicGate= new LogicGates(2);
+        myLogicGate= new LogicGates(4);
 
-        gen_output_button=v.findViewById(R.id.xor_button_gen_output);
-        input1_edittext=  v.findViewById(R.id.xor_edittext_input_1);
-        input2_edittext=  v.findViewById(R.id.xor_edittext_input_2);
-        output1_textview= v.findViewById(R.id.xor_textview_output_1);
-        gate_imageview=v.findViewById(R.id.xor_imageview);
+        gen_output_button=v.findViewById(R.id.full_adder_button_gen_output);
+        input1_edittext=  v.findViewById(R.id.full_adder_edittext_input_1);
+        input2_edittext=  v.findViewById(R.id.full_adder_edittext_input_2);
+        output1_textview= v.findViewById(R.id.full_adder_textview_output_1);
+        output2_textview= v.findViewById(R.id.full_adder_textview_output_2);
+        input3_edittext=  v.findViewById(R.id.full_adder_edittext_input_3);
+
+
+
+        gate_imageview=   v.findViewById(R.id.full_adder_imageview);
 
         gen_output_button.setOnClickListener(new View.OnClickListener()
         {
@@ -71,6 +76,8 @@ public class XorGateFragment extends Fragment {
             {
                 boolean input1;
                 boolean input2;
+                boolean input3;
+
 
                 if(Objects.equals(input2_edittext.getText().toString(),"0"))
                 {
@@ -84,7 +91,7 @@ public class XorGateFragment extends Fragment {
                 }
                 else
                 {
-                    tosty(getContext(),"Input 2 is Invalid!"+input2_edittext.getText().toString());
+                    tosty(getContext(),"Input 2 is Invalid!");
                     return;
                 }
 
@@ -100,44 +107,69 @@ public class XorGateFragment extends Fragment {
                 }
                 else
                 {
-                    tosty(getContext(),"Input 1 is Invalid!"+input1_edittext.getText().toString());
+                    tosty(getContext(),"Input 1 is Invalid!");
                     return;
                 }
 
-                setImage(input1,input2);
+                if(Objects.equals(input3_edittext.getText().toString(),"0"))
+                {
+                    input3 = false;
+
+                }
+                else if(Objects.equals(input3_edittext.getText().toString(),"1"))
+                {
+                    input3 = true;
+
+                }
+                else
+                {
+                    tosty(getContext(),"Input 3 is Invalid!");
+                    return;
+                }
+
+                setImage(input1,input2,input3);
+
+                result=myLogicGate.getFullAdderOutput(input1,input2,input3);
+
+                // boolean[] result=myLogicGate.getFullAdderOutput(input1,input2,input3);
 
 
-                output1_textview.setText(myLogicGate.getXOROutput(input1,input2)?"1":"0");
+                output1_textview.setText(result[0]?"1":"0");
+                output2_textview.setText(result[1]?"1":"0");
+
 
             }
         });
 
 
-        return v;
 
+        return v;
     }
 
-
-    private void setImage(boolean input1,boolean input2)
+    private void setImage(boolean input1,boolean input2,boolean input3)
     {
         if(input1&&input2)
         {
-            gate_imageview.setImageResource(R.drawable.xor_11);
+            if(input3) gate_imageview.setImageResource(R.drawable.full_adder_111);
+            else gate_imageview.setImageResource(R.drawable.full_adder_110);
 
         }
         else if(input1&&!input2)
         {
-            gate_imageview.setImageResource(R.drawable.xor_10);
+            if(input3) gate_imageview.setImageResource(R.drawable.full_adder_101);
+            else gate_imageview.setImageResource(R.drawable.full_adder_100);
 
         }
         else if(!input1&&input2)
         {
-            gate_imageview.setImageResource(R.drawable.xor_01);
+            if(input3) gate_imageview.setImageResource(R.drawable.full_adder_011);
+            else gate_imageview.setImageResource(R.drawable.full_adder_010);
 
         }
         else if(!input1&&!input2)
         {
-            gate_imageview.setImageResource(R.drawable.xor_00);
+            if(input3) gate_imageview.setImageResource(R.drawable.full_adder_001);
+            else gate_imageview.setImageResource(R.drawable.full_adder_000);
 
         }
     }

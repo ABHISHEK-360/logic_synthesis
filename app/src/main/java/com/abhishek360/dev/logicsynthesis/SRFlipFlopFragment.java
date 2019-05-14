@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,25 +17,26 @@ import java.util.Objects;
 import static com.abhishek360.dev.logicsynthesis.MainActivity.tosty;
 
 
-public class XorGateFragment extends Fragment {
+public class SRFlipFlopFragment extends Fragment
+{
 
     private EditText input1_edittext,input2_edittext;
-    private TextView output1_textview;
+    private TextView output1_textview,output2_textview;
     private Button gen_output_button;
-    private LogicGates myLogicGate;
     private ImageView gate_imageview;
+    private LogicGates myLogicGate;
 
 
     private OnFragmentInteractionListener mListener;
+    private boolean[] result={false,false};
 
-
-    public XorGateFragment() {
+    public SRFlipFlopFragment() {
         // Required empty public constructor
     }
 
 
-    public static XorGateFragment newInstance(String param1, String param2) {
-        XorGateFragment fragment = new XorGateFragment();
+    public static SRFlipFlopFragment newInstance(String param1, String param2) {
+        SRFlipFlopFragment fragment = new SRFlipFlopFragment();
         Bundle args = new Bundle();
 
         fragment.setArguments(args);
@@ -54,15 +54,19 @@ public class XorGateFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v=  inflater.inflate(R.layout.fragment_xor_gate, container, false);
+        // Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_srflip_flop, container, false);
 
-        myLogicGate= new LogicGates(2);
 
-        gen_output_button=v.findViewById(R.id.xor_button_gen_output);
-        input1_edittext=  v.findViewById(R.id.xor_edittext_input_1);
-        input2_edittext=  v.findViewById(R.id.xor_edittext_input_2);
-        output1_textview= v.findViewById(R.id.xor_textview_output_1);
-        gate_imageview=v.findViewById(R.id.xor_imageview);
+        myLogicGate= new LogicGates(5);
+
+        gen_output_button=v.findViewById(R.id.srff_button_gen_output);
+        input1_edittext=  v.findViewById(R.id.srff_edittext_input_1);
+        input2_edittext=  v.findViewById(R.id.srff_edittext_input_2);
+        output1_textview= v.findViewById(R.id.srff_textview_output_1);
+        output2_textview= v.findViewById(R.id.srff_textview_output_2);
+
+        gate_imageview=v.findViewById(R.id.srff_imageview);
 
         gen_output_button.setOnClickListener(new View.OnClickListener()
         {
@@ -106,42 +110,45 @@ public class XorGateFragment extends Fragment {
 
                 setImage(input1,input2);
 
+                result=myLogicGate.getSRFFOutput(input1,result[0],input2);
 
-                output1_textview.setText(myLogicGate.getXOROutput(input1,input2)?"1":"0");
+
+                output1_textview.setText(result[0]?"1":"0");
+                output2_textview.setText(result[1]?"1":"0");
+
 
             }
         });
 
 
         return v;
-
     }
-
 
     private void setImage(boolean input1,boolean input2)
     {
         if(input1&&input2)
         {
-            gate_imageview.setImageResource(R.drawable.xor_11);
+            gate_imageview.setImageResource(R.drawable.rs11);
 
         }
         else if(input1&&!input2)
         {
-            gate_imageview.setImageResource(R.drawable.xor_10);
+            gate_imageview.setImageResource(R.drawable.rs10);
 
         }
         else if(!input1&&input2)
         {
-            gate_imageview.setImageResource(R.drawable.xor_01);
+            gate_imageview.setImageResource(R.drawable.rs01);
 
         }
         else if(!input1&&!input2)
         {
-            gate_imageview.setImageResource(R.drawable.xor_00);
+            gate_imageview.setImageResource(R.drawable.rs00);
 
         }
     }
 
+    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -164,6 +171,7 @@ public class XorGateFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

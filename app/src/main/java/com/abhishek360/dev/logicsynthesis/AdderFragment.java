@@ -26,6 +26,7 @@ public class AdderFragment extends Fragment
     private Button gen_output_button;
     private LogicGates myLogicGate;
     private ImageView gate_imageview;
+    private boolean[] result={false,false} ;
 
     private OnFragmentInteractionListener mListener;
 
@@ -64,6 +65,8 @@ public class AdderFragment extends Fragment
         output1_textview= v.findViewById(R.id.half_adder_textview_output_1);
         output2_textview= v.findViewById(R.id.half_adder_textview_output_2);
 
+
+
         gate_imageview=   v.findViewById(R.id.half_adder_imageview);
 
         gen_output_button.setOnClickListener(new View.OnClickListener()
@@ -73,6 +76,8 @@ public class AdderFragment extends Fragment
             {
                 boolean input1;
                 boolean input2;
+                boolean input3;
+
 
                 if(Objects.equals(input2_edittext.getText().toString(),"0"))
                 {
@@ -86,7 +91,7 @@ public class AdderFragment extends Fragment
                 }
                 else
                 {
-                    tosty(getContext(),"Input 2 is Invalid!"+input2_edittext.getText().toString());
+                    tosty(getContext(),"Input 2 is Invalid!");
                     return;
                 }
 
@@ -102,13 +107,17 @@ public class AdderFragment extends Fragment
                 }
                 else
                 {
-                    tosty(getContext(),"Input 1 is Invalid!"+input1_edittext.getText().toString());
+                    tosty(getContext(),"Input 1 is Invalid!");
                     return;
                 }
 
+
+
                 //setImage(input1,input2);
 
-                boolean[] result=myLogicGate.getHalfAdderOutput(input1,input2);
+                result=myLogicGate.getHalfAdderOutput(input1,input2);
+
+               // boolean[] result=myLogicGate.getFullAdderOutput(input1,input2,input3);
 
 
                 output1_textview.setText(result[0]?"1":"0");
@@ -122,26 +131,30 @@ public class AdderFragment extends Fragment
     }
 
 
-    private void setImage(boolean input1,boolean input2)
+    private void setImage(boolean input1,boolean input2,boolean input3)
     {
         if(input1&&input2)
         {
-            gate_imageview.setImageResource(R.drawable.and_11);
+            if(input3) gate_imageview.setImageResource(R.drawable.and_11);
+            else gate_imageview.setImageResource(R.drawable.and_11);
 
         }
         else if(input1&&!input2)
         {
-            gate_imageview.setImageResource(R.drawable.and_10);
+            if(input3) gate_imageview.setImageResource(R.drawable.and_11);
+            else gate_imageview.setImageResource(R.drawable.and_11);
 
         }
         else if(!input1&&input2)
         {
-            gate_imageview.setImageResource(R.drawable.and_01);
+            if(input3) gate_imageview.setImageResource(R.drawable.and_11);
+            else gate_imageview.setImageResource(R.drawable.and_11);
 
         }
         else if(!input1&&!input2)
         {
-            gate_imageview.setImageResource(R.drawable.and_00);
+            if(input3) gate_imageview.setImageResource(R.drawable.and_11);
+            else gate_imageview.setImageResource(R.drawable.and_11);
 
         }
     }

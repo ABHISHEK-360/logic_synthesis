@@ -11,13 +11,13 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:padding="10dp"
             android:id="@+id/half_adder_imageview"
             android:layout_margin="10dp"
             android:background="@drawable/round_corner_bg_image"
             android:layout_height="200dp"
-            android:src="@drawable/img_default"/>
+            android:src="@drawable/full_adder"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                         android:textSize="20sp"
                         android:padding="5dp"
                         android:textColor="@android:color/black"
-                        android:text="@string/i_0"/>
+                        android:text="@string/a_0"/>
 
                     <EditText
                         android:padding="5dp"
@@ -99,7 +99,7 @@
                         android:textSize="20sp"
                         android:padding="5dp"
                         android:textColor="@android:color/black"
-                        android:text="@string/i_1"/>
+                        android:text="@string/b_0"/>
 
                     <EditText
                         android:padding="5dp"
@@ -112,6 +112,9 @@
                         android:layout_height="wrap_content"
                         android:hint="Binary Value"/>
                 </LinearLayout>
+
+
+
 
 
 
@@ -151,7 +154,7 @@
                         android:textSize="20sp"
                         android:padding="5dp"
                         android:textColor="@android:color/black"
-                        android:text="@string/o_0"/>
+                        android:text="S"/>
 
                     <EditText
                         android:padding="5dp"
@@ -176,7 +179,7 @@
                         android:textSize="20sp"
                         android:padding="5dp"
                         android:textColor="@android:color/black"
-                        android:text="@string/o_1"/>
+                        android:text="@string/c_out"/>
 
                     <EditText
                         android:padding="5dp"

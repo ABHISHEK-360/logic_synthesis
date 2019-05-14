@@ -29,13 +29,7 @@
 
         </item>
 
-        <item
-            android:id="@+id/nor_gate_menu"
-            android:textColor="#1871ba"
 
-            android:title="NOR Gate">
-
-        </item>
 
         <item
             android:id="@+id/XOR_gate_menu"
@@ -50,6 +44,22 @@
             android:textColor="#1871ba"
 
             android:title="Half Adder">
+
+        </item>
+
+        <item
+            android:id="@+id/full_adder_menu"
+            android:textColor="#1871ba"
+
+            android:title="Full Adder">
+
+        </item>
+
+        <item
+            android:id="@+id/srff_gate_menu"
+            android:textColor="#1871ba"
+
+            android:title="SR Flip-Flop">
 
         </item>
 
